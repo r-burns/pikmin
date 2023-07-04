@@ -27,4 +27,4 @@ jobs:
           | bsdtar -xvf- -C tools --exclude Wii
         mv tools/GC tools/mwcc_compiler
     - name: make
-      run: make -j PYTHON=$(PWD)/python/install/bin/python3
+      run: make -j PYTHON=$PWD/python/install/bin/python3
