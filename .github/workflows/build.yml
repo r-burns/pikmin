@@ -19,7 +19,8 @@ jobs:
         sudo chown $(whoami) "$GITHUB_WORKSPACE"
         sudo curl -OL https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.8.16+20230507-x86_64-unknown-linux-musl-lto-full.tar.zst
         sudo zstd -d *.zst
-        sudo tar xf *.tar
+        sudo tar xvf *.tar
+        export PYTHON38=$PWD/python/install/bin/python3
     - uses: actions/checkout@v3
     - name: Download compilers
       run: |
@@ -27,4 +28,4 @@ jobs:
           | bsdtar -xvf- -C tools --exclude Wii
         mv tools/GC tools/mwcc_compiler
     - name: make
-      run: make -j PYTHON=$PWD/python/install/bin/python3
+      run: make -j PYTHON=$PYTHON38
