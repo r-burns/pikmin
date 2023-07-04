@@ -15,13 +15,14 @@ jobs:
       run: |
         sudo dpkg --add-architecture i386
         sudo apt-get update
-        sudo apt-get -y install build-essential wine32 zstd
+        sudo apt-get -y install build-essential wine32
         sudo chown $(whoami) "$GITHUB_WORKSPACE"
         sudo curl -OL https://github.com/indygreg/python-build-standalone/releases/download/20230507/cpython-3.8.16+20230507-x86_64-unknown-linux-gnu-install_only.tar.gz
         sudo tar xvf *.tar.gz
         export PYTHON38=$PWD/python/bin/python3
         curl -L https://github.com/encounter/decomp-toolkit/releases/download/v0.2.3/dtk-linux-x86_64 -o dtk
         chmod +x dtk
+        export DTK=$PWD/dtk
     - uses: actions/checkout@v3
     - name: Download compilers
       run: |
@@ -29,4 +30,4 @@ jobs:
           | bsdtar -xvf- -C tools --exclude Wii
         mv tools/GC tools/mwcc_compiler
     - name: make
-      run: make -j PYTHON=$PYTHON38 DTK=$PWD/dtk
+      run: make -j PYTHON=$PYTHON38 DTK=$DTK
