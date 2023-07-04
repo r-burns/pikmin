@@ -29,5 +29,6 @@ jobs:
         curl -L https://cdn.discordapp.com/attachments/727918646525165659/917185027656286218/GC_WII_COMPILERS.zip \
           | bsdtar -xvf- -C tools --exclude Wii
         mv tools/GC tools/mwcc_compiler
+        chmod +x tools/frank.py
     - name: make
       run: make -j PYTHON=$PYTHON38 DTK=$DTK
