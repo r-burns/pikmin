@@ -131,7 +131,7 @@ clean:
 	rm -f -d -r build
 	rm -f -d -r epilogue
 
-$(DTK): tools/dtk_version
+tools/dtk: tools/dtk_version
 	@echo "Downloading $@"
 	$(QUIET) $(PYTHON) tools/download_dtk.py $< $@
 
