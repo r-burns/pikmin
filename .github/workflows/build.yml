@@ -15,7 +15,7 @@ jobs:
       run: |
         sudo dpkg --add-architecture i386
         sudo apt-get update
-        sudo apt-get -y install build-essential wine32 python38
+        sudo apt-get -y install build-essential wine32 python3.8
         sudo chown $(whoami) "$GITHUB_WORKSPACE"
         python3 --version
     - uses: actions/checkout@v3
